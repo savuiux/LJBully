@@ -13,5 +13,20 @@
         </div>
     </footer>
     <script src="<?php echo $baseUrl; ?>/assets/js/core.js"></script>
+    <?php if (!empty($use_slider)): ?>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            slidesPerView: 3,
+            // slidesPerGroup: 3,
+            spaceBetween: 24,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            }
+        });
+    </script>
+    <?php endif; ?>
 </body>
 </html>

@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+
+    function closeModal() {
+        modal.style.display = 'none';
+        modalImg.src = '';
+    }
+
     window.addEventListener('load', () => {
         const preloader = document.querySelector('.preloader');
         if (preloader) {
@@ -87,6 +95,41 @@ document.addEventListener('DOMContentLoaded', () => {
         element.addEventListener('mouseup', () => {
             element.style.outline = '';
         });
+    });
+
+    document.querySelectorAll('.swiper-zoomable').forEach(img => {
+        img.addEventListener('click', function () {
+            if (modal.style.display === 'flex' && modalImg.src === this.src) {
+                closeModal();
+            } else {
+                modalImg.src = this.src;
+                modal.style.display = 'flex';
+            }
+        });
+    });
+
+    if (modal) {
+        modal.addEventListener('click', () => {
+            closeModal();
+        });
+    }
+
+    // If just clicking on backdrop
+    // modal.addEventListener('click', (e) => {
+    // if (e.target === modal || e.target === modalImg) {
+    //     closeModal();
+    // }
+    // });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+            modal.style.display = 'none';
+            modalImg.src = '';
+        }
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
     });
 
     window.addEventListener('scroll', () => {

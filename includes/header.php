@@ -1,6 +1,6 @@
 
 <?php
-    $baseUrl = '/Compass';
+    $baseUrl = '/Compass/LJBully';
     if (!isset($pageTitle)) {
         $pageTitle = "Compass";
     }
@@ -20,7 +20,10 @@
     <meta name="author" content="Compass">
     <title><?php echo $pageTitle; ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Montserrat:wght@500;600&family=Adventure&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo $baseUrl; ?>/assets/css/style.css" >
+    <link rel="stylesheet" href="<?php echo $baseUrl; ?>/assets/css/style.css">
+    <?php if (!empty($use_slider)): ?>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <?php endif; ?>
 </head>
 <body>
     <header class="container margin-auto">
